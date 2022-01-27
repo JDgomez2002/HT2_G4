@@ -8,11 +8,12 @@
 //Sección 41
 //Actividad: HT2
 
+/**
+ * Main del grupo 4
+ */
+
 public class MainG4{
     public static void main(String[] args) {
         
     }
-
-//commit de prueba
-//prueba 2
 }
