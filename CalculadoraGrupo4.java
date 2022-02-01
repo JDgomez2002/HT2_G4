@@ -1,3 +1,7 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Test;
+
 //Universidad del Valle de Guatemala
 //Algoritmos y Estructura de Datos
 //Catedrático Douglas Barrios
@@ -38,11 +42,9 @@ public class CalculadoraGrupo4 implements Calculator{
                     case "+":
                         String s1 = v.remove();
                         double calculo = Double.parseDouble(s1);
-                        int j1 = v.size();
                         
-                        for(int i = 0; i<j1 ;i++){
-                            calculo += Double.parseDouble(v.remove());
-                        }
+                        calculo += Double.parseDouble(v.remove());
+                        
 
                         String item = Double.toString(calculo);
                         v.add(item);
@@ -52,12 +54,9 @@ public class CalculadoraGrupo4 implements Calculator{
                     case "-":
                         String s2 = v.remove();
                         double calculo2 = Double.parseDouble(s2);
-                            
-                        int j2 = v.size();
+                                                    
                         
-                        for(int i = 0; i<j2 ;i++){
-                            calculo2 -= Double.parseDouble(v.remove());
-                        }
+                        calculo2 -= Double.parseDouble(v.remove());
 
                         String item2 = Double.toString(calculo2);
                         v.add(item2);
@@ -67,11 +66,8 @@ public class CalculadoraGrupo4 implements Calculator{
                     case "*":
                         String s3 = v.remove();
                         double calculo3 = Double.parseDouble(s3);
-                        int j3 = v.size();
 
-                        for(int i = 0; i<j3 ;i++){
-                            calculo3 = (calculo3 * (Double.parseDouble(v.remove())));
-                        }
+                        calculo3 = (calculo3 * (Double.parseDouble(v.remove())));
 
                         String item3 = Double.toString(calculo3);
                         v.add(item3);
@@ -81,11 +77,8 @@ public class CalculadoraGrupo4 implements Calculator{
                     case "/":
                         String s4 = v.remove();
                         double calculo4 = Double.parseDouble(s4);
-                        int j4 = v.size();
                                     
-                        for(int i = 0; i<j4 ;i++){
-                            calculo4 = (Double.parseDouble(v.remove())/calculo4);
-                        }
+                        calculo4 = (Double.parseDouble(v.remove())/calculo4);
 
                         String item4 = Double.toString(calculo4);
                         v.add(item4);
@@ -109,10 +102,18 @@ public class CalculadoraGrupo4 implements Calculator{
             String s = "CalculadoraGrupo4: calculate(): "+e.getMessage();
             throw new RuntimeException(s);
         }
-
         return respuesta;
     }
 
-
-
+    
+    @Test
+    //Prueba para demostrar que la calculadora funciona correctamente
+    public void testCalculate(){
+        assertEquals(36, calculate("1 2 + 3 4 * *"));
+        assertEquals(10, calculate("4 2 / 6 2 + + "));
+        assertEquals(0, calculate("8 2 2 -"));
+        assertEquals(3, calculate("7 8 + 6 + 9 3 /"));
+    }
 }
+
+
