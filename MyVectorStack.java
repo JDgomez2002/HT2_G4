@@ -19,6 +19,7 @@ public class MyVectorStack implements Stack<String> {
     Vector<String> myStack = new Vector<String>(5,5);
     private int espacios;
     private int recorrido;
+    Vector<String> myStack2 = new Vector<String>(myStack);
 
     /**
      * Constructor.
@@ -34,9 +35,7 @@ public class MyVectorStack implements Stack<String> {
      */
     public void add(String item){
         this.myStack.add(item);
-        if(this.recorrido!=this.espacios){
-            this.recorrido = this.espacios;
-        }
+        this.myStack2.add(item);
         this.espacios += 1;
         this.recorrido += 1;
     }
@@ -52,6 +51,7 @@ public class MyVectorStack implements Stack<String> {
         if((!this.myStack.isEmpty()&&(this.espacios>0))){
             s = this.myStack.get(last);
             myStack.remove(last);
+            myStack2.remove(last);
             this.espacios -= 1;
             this.recorrido -= 1;
         }
@@ -65,15 +65,10 @@ public class MyVectorStack implements Stack<String> {
      */
     public String peek(){
         String s = null;
-        int last = this.recorrido-1;
+        int last = this.espacios-1;
 
-        if(this.recorrido!=this.espacios){
-            this.recorrido = this.espacios;
-        }
-
-        if(((!this.myStack.isEmpty())&&(this.recorrido>0))){
+        if((!this.myStack.isEmpty()&&(this.espacios>0))){
             s = this.myStack.get(last);
-            this.recorrido -= 1;
         }
 
         return s;

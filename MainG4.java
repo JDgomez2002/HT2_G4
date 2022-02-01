@@ -138,6 +138,7 @@ class Vista{
         System.out.println("- Vuelve pronto!");
         System.out.println("---------------------------------------------");
         System.out.println();
+        System.out.println();
     }
 
 }
